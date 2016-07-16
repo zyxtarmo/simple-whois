@@ -27,8 +27,9 @@ def init():
             conn, addr = serv.accept()
             data = conn.recv(BUFSIZE)
             requested_domain = data.rstrip()
-            # lets open file if it exists
+            # lets log the request 
             logger_handler.info('client_ip:{0} requested_domain:{1}'.format(addr[0], data.rstrip()))
+            # sending response to the client
             conn.send(read_file(requested_domain)+'\r\n')
             conn.close()
 
