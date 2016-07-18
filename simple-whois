@@ -10,7 +10,7 @@ case "$1" in
     su - ec2-user -c "nohup python /opt/whois.py > /tmp/$name 2>&1 </dev/null &"
     ;;
   'stop')
-    echo "stopping simple-whois server..."
+    echo "Stopping $name"
     pkill -u ec2-user python
   ;;
 esac
