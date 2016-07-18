@@ -27,7 +27,7 @@ But now running whois from the localhost will not work for the default port 43. 
     iptables -A OUTPUT -t nat -p tcp --dport 43 -j REDIRECT --to-port 1043
 ```
 
-Simple way to prevent DoS attacks on the simple-whois service would be to use iptables to throttle down fequent requests:
+Simple way to prevent DoS attacks on the simple-whois service would be to use iptables to throttle down frequent requests:
 ```
     iptables -A INPUT -p tcp --dport 43 -m state --state NEW -m limit --limit 50/minute --limit-burst 200 -j ACCEPT
 ```
