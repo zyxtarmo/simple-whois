@@ -17,7 +17,7 @@ Securing simple-whois service
 Whois service operates on the port 43 of TCP protocol. In order to start using this port the script has to run as root user. But this is potential issue if service gets compromised and hacker gets access to the system.
 
 It is better to start a service with a non-root user that has limited rights to the system. One of the workarounds for this problem could be the use of Iptables.
-Service starts on the 1043 port by a regular user nad iptable rule is used to forward port 1043 -> 43:
+Service starts on the 1043 port by a regular user and iptable rule is used to forward port 1043 -> 43:
 ``` 
     iptables -A PREROUTING -t nat -p tcp --dport 43 -j REDIRECT --to-port 1043
 ```
