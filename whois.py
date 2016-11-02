@@ -12,6 +12,11 @@ BUFSIZE = 1024
 ADDR = (HOST,PORT)
 CWD = os.path.dirname(os.path.realpath(__file__))
 
+def is_safe_path(basedir, path, follow_symlinks=True):
+  # resolves symbolic links
+  if follow_symlinks:
+    return os.path.realpath(path).startswith(basedir)
+  return os.path.abspath(path).startswith(basedir)
 
 def init():
     """
@@ -43,6 +48,8 @@ def read_file(filename):
     If file is not found returns 'Record not found'
     """
     error_to_catch = getattr(__builtins__, 'FileNotFoundError', IOError)
+    if not is_safe_path(CWD+'/db/', CWD+'/db/'+filename):
+        return 'Error'
     
     try:
         full_path = CWD + '/db/' + filename
