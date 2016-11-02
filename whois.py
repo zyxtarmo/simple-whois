@@ -12,6 +12,7 @@ BUFSIZE = 1024
 ADDR = (HOST,PORT)
 CWD = os.path.dirname(os.path.realpath(__file__))
 
+# SRC: https://security.openstack.org/guidelines/dg_using-file-paths.html
 def is_safe_path(basedir, path, follow_symlinks=True):
   # resolves symbolic links
   if follow_symlinks:
